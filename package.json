@@ -1,0 +1,24 @@
+{
+  "name": "nodeapp-ci-cd",
+  "version": "1.0.0",
+  "description": "Nodejs CI/CD Pipeline",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://kamyavaish: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@github.com/kamyavaish/nodeapp-ci-cd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kamyavaish/nodeapp-ci-cd/issues"
+  },
+  "homepage": "https://github.com/kamyavaish/nodeapp-ci-cd#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.18.1"
+  }
+}
