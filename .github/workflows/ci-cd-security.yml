@@ -38,24 +38,10 @@ jobs:
 
       #6 Container scanning
       - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@v2
+        uses: aquasecurity/trivy-action@master
         with:
            image-ref: nodeapp:latest
            severity-threshold: CRITICAL  
-
-      # - name: Checkout repo
-      #   uses: actions/checkout@v4
-
-      # - name: Clear Docker config
-      #   run: rm -rf ~/.docker
-
-      # - name: Safe debug for credentials
-      #   run: |
-      #     echo "Username length: ${#DOCKER_USERNAME}"
-      #     echo "Password starts with: ${DOCKER_PASSWORD:0:4}*** (length: ${#DOCKER_PASSWORD})"
-      #   env:
-      #      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      #      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
       #7 Login to Docker Hub
       - name: Docker Login
@@ -66,8 +52,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       #8 Push image
-      # - name: Push Docker image
-      #   if: success()
-      #   run: |
-      #      docker tag nodeapp:latest kamyavaish/nodeapp:latest
-      #      docker push kamyavaish/nodeapp:latest
+      - name: Push Docker image
+        if: success()
+        run: |
+           docker tag nodeapp:latest kamyavaish/nodeapp:latest
+           docker push kamyavaish/nodeapp:latest
