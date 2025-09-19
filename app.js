@@ -1,15 +1,18 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
+// MongoDB connection using environment variables
+const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_DATABASE = process.env.MONGODB_DATABASE;
 
-const uri = 'mongodb://localhost:27017/nodeapp-cicd';
-
-mongoose.connect(uri, {
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    dbName: MONGODB_DATABASE
 })
 .then(() => console.log("Successfully connected to MongoDB"))
 .catch((error) => {
@@ -26,5 +29,5 @@ app.get("/health", (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });

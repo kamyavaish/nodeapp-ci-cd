@@ -30,14 +30,17 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2
         with:
          args: >
-          -Dsonar.projectKey=kamyavaish_nodeapp-ci-cd
-          -Dsonar.organization=kamyapranjal
+          -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+          -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
         env:
            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
       #5 BUILD IMAGE
       - name: Build Docker image
         run: docker build -t nodeapp:latest .
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_DATABASE: ${{ secrets.MONGODB_DATABASE }}
 
       #6 Container scanning
       - name: Scan Docker image with Trivy
