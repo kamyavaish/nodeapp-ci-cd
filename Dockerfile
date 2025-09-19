@@ -31,4 +31,4 @@ USER appuser
 
 EXPOSE 8080
 
-CMD ["node" , "index.js"]
+CMD ["node" , "app.js"]
