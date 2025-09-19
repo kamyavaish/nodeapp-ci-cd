@@ -1,0 +1,6 @@
+# Dependency directories
+node_modules/
+
+# Terraform
+terraform_iac/.terraform/
+terraform_iac/.terraform.lock.hcl
